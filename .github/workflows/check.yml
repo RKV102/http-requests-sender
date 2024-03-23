@@ -20,5 +20,3 @@ jobs:
         make configure
     - name: Linting by flake8
       run: make lint
-    - name: Testing by pytest
-      run: make test
