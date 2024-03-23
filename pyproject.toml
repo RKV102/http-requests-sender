@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "csv-converter"
+name = "curl-converter"
 version = "0.1.0"
 description = ""
 authors = ["RKV102 <roman.krilow@mail.ru>"]
@@ -7,7 +7,7 @@ readme = "README.md"
 
 
 [tool.poetry.scripts]
-csv-converter = "csv_converter.scripts.entry_point:main"
+curl-converter = "curl_converter.scripts.entry_point:main"
 
 
 [tool.poetry.dependencies]
@@ -15,7 +15,6 @@ python = "^3.11"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.1.1"
 coverage = "^7.4.4"
 flake8 = "^7.0.0"
 
