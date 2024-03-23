@@ -1,5 +1,5 @@
-from csv_converter import get_files, get_files_content
-from csv_converter.converter import convert
+from curl_converter import get_files, get_files_content
+from curl_converter.converter import convert
 
 
 def main():

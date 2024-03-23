@@ -1,4 +1,4 @@
-from csv_converter.http import get_http_requests, build_curl_requests
+from curl_converter.http import get_http_requests, build_curl_requests
 
 
 def convert(contents):
