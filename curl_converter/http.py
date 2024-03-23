@@ -7,23 +7,34 @@ class HttpRequest:
             pattern='^(POST|GET|PUT)(?= )',
             string=string,
             flags=re.M
-        )[0]
+        )
         self.url = re.findall(
             pattern=r'(?<=GET ).*?(?=\?| )|(?<=POST ).*?(?= )'
                     + r'|(?<=PUT ).*?(?= )',
             string=string
-        )[0]
-        self.query = transform(
-            re.findall(pattern=r'(?<=\?).*?(?= HTTP)', string=string)
         )
-        self.headers = [f'"{item}"' for item in re.findall(
+        self.query = re.findall(pattern=r'(?<=\?).*?(?= HTTP)', string=string)
+        self.headers = re.findall(
             pattern='^[A-Z][^A-Z].*?:.*?(?=\n)',
             string=string,
             flags=re.M
-        )]
-        self.body = transform(
-            re.findall(pattern='(?<=\n\n)[^ ]+?(?=\n)', string=string)
         )
+        self.body = re.findall(pattern='(?<=\n\n)[^ ]+?(?=\n)', string=string)
+
+    def get_method(self):
+        return self.method[0]
+
+    def get_url(self):
+        return self.url[0]
+
+    def get_query(self):
+        return f'"{self.query[0]}"' if self.query else None
+
+    def get_headers(self):
+        return [f'"{header}"' for header in self.headers]
+
+    def get_body(self):
+        return f'"{self.body[0]}"' if self.body else None
 
 
 def get_http_requests(contents):
@@ -40,16 +51,17 @@ def get_http_requests(contents):
 def build_curl_requests(http_requests):
     curl_requests = []
     for http_request in http_requests:
-        curl_request = [f'curl -X {http_request.method}']
-        if http_request.body:
-            curl_request.append('-d ' + http_request.body)
-        elif http_request.query:
-            curl_request.append('-G -d ' + http_request.query)
-        curl_request.append('-H ' + ' -H '.join(http_request.headers))
-        curl_request.append(http_request.url)
+        method = http_request.get_method()
+        url = http_request.get_url()
+        query = http_request.get_query()
+        headers = http_request.get_headers()
+        body = http_request.get_body()
+        curl_request = [f'curl -X {method}']
+        if body:
+            curl_request.append('-d ' + body)
+        elif query:
+            curl_request.append('-G -d ' + query)
+        curl_request.append('-H ' + ' -H '.join(headers))
+        curl_request.append(url)
         curl_requests.append(' '.join(curl_request))
     return curl_requests
-
-
-def transform(input):
-    return f'"{input[0]}"' if input else None
