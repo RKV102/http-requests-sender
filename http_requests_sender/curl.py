@@ -1,6 +1,3 @@
-import subprocess
-
-
 def build_curl_requests(http_requests):
     curl_requests = []
     for http_request in http_requests:
@@ -21,6 +18,6 @@ def build_curl_requests(http_requests):
     return curl_requests
 
 
-def send_curl_requests(curl_requests, handler=subprocess.run):
+def send_curl_requests(curl_requests, sender, stdout):
     for curl_request in curl_requests:
-        handler(curl_request, stdout=subprocess.DEVNULL)
+        sender(args=curl_request, stdout=stdout)
