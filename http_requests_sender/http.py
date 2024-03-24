@@ -4,7 +4,7 @@ import re
 class HttpRequest:
     def __init__(self, string):
         self.method = re.findall(
-            pattern='^(POST|GET|PUT)(?= )',
+            pattern=r'^(POST|GET|PUT)(?= )',
             string=string,
             flags=re.M
         )
@@ -15,11 +15,11 @@ class HttpRequest:
         )
         self.query = re.findall(pattern=r'(?<=\?).*?(?= HTTP)', string=string)
         self.headers = re.findall(
-            pattern='^[A-Z][^A-Z].*?:.*?(?=\n)',
+            pattern=r'^[A-Z][^A-Z].*?:.*?(?=\n)',
             string=string,
             flags=re.M
         )
-        self.body = re.findall(pattern='(?<=\n\n)[^ ]+?(?=\n)', string=string)
+        self.body = re.findall(pattern=r'(?<=\n\n)[^ ]+?(?=\n)', string=string)
 
     def get_method(self):
         return self.method[0]
@@ -40,7 +40,7 @@ class HttpRequest:
 def get_http_requests(contents):
     return [HttpRequest(j) for i in [
         re.findall(
-            pattern='(POST.+?\n\n.+?\n|PUT.+?\n\n.+?\n|GET.+?\n(?=\n))',
+            pattern=r'(POST.+?\n\n.+?\n|PUT.+?\n\n.+?\n|GET.+?\n(?=\n))',
             string=content,
             flags=re.S
         )
