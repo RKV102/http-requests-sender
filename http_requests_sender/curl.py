@@ -1,4 +1,4 @@
-from os import system
+import subprocess
 
 
 def build_curl_requests(http_requests):
@@ -9,17 +9,18 @@ def build_curl_requests(http_requests):
         query = http_request.get_query()
         headers = http_request.get_headers()
         body = http_request.get_body()
-        curl_request = [f'curl -X {method}']
+        curl_request = ['curl', '-X', method]
         if body:
-            curl_request.append('-d ' + body)
+            curl_request = [*curl_request, '-d', body]
         elif query:
-            curl_request.append('-G -d ' + query)
-        curl_request.append('-H ' + ' -H '.join(headers))
-        curl_request.append(url)
-        curl_requests.append(' '.join(curl_request))
+            curl_request = [*curl_request, '-G', '-d', query]
+        curl_request = [*curl_request, *[
+            j for i in [('-H', header) for header in headers] for j in i
+        ], url]
+        curl_requests.append(curl_request)
     return curl_requests
 
 
 def send_curl_requests(curl_requests):
     for curl_request in curl_requests:
-        system(curl_request)
+        subprocess.run(curl_request, stdout=subprocess.DEVNULL)
