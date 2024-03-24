@@ -3,6 +3,7 @@ from os.path import dirname, abspath, join, isfile
 
 
 INPUT_DIR = join(dirname(dirname(abspath(__file__))), 'input')
+DESTINATION_IP = '192.168.1.45'
 
 
 def get_files(input_dir=INPUT_DIR):

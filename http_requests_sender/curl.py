@@ -1,10 +1,14 @@
-def build_curl_requests(http_requests):
+def build_curl_requests(http_requests, destination_ip):
     curl_requests = []
     for http_request in http_requests:
         method = http_request.get_method()
-        url = http_request.get_url()
+        url = http_request.get_url().replace('localhost', destination_ip)
         query = http_request.get_query()
-        headers = http_request.get_headers()
+        headers = [
+            header if 'localhost' not in header
+            else header.replace('localhost', destination_ip)
+            for header in http_request.get_headers()
+        ]
         body = http_request.get_body()
         curl_request = ['curl', '-X', method]
         if body:
