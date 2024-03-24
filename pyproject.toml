@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "curl-converter"
+name = "http-requests-sender"
 version = "0.1.0"
 description = ""
 authors = ["RKV102 <roman.krilow@mail.ru>"]
@@ -7,7 +7,7 @@ readme = "README.md"
 
 
 [tool.poetry.scripts]
-curl-converter = "curl_converter.scripts.entry_point:main"
+http-requests-sender = "http_requests_sender.scripts.entry_point:main"
 
 
 [tool.poetry.dependencies]

@@ -1,5 +1,5 @@
+from http_requests_sender.http import get_http_requests
 from tests import get_fixture_content
-from curl_converter.http import get_http_requests
 from tests.fixtures.http_requests import http_requests as output_http_requests
 
 
