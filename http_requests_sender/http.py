@@ -28,13 +28,13 @@ class HttpRequest:
         return self.url[0]
 
     def get_query(self):
-        return f'{self.query[0]}' if self.query else None
+        return self.query[0] if self.query else None
 
     def get_headers(self):
         return self.headers
 
     def get_body(self):
-        return f'{self.body[0]}' if self.body else None
+        return self.body[0] if self.body else None
 
 
 def get_http_requests(contents):
