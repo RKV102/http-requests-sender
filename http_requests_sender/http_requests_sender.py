@@ -10,7 +10,7 @@ def send_http_requests(files,
     contents = get_file_contents(files)
     http_requests = get_http_requests(contents)
     curl_requests = build_curl_requests(http_requests, destination_ip)
-    send_curl_requests(curl_requests[:3], request_sender, request_sender_stdout)
+    send_curl_requests(curl_requests, request_sender, request_sender_stdout)
 
 
 def get_file_contents(file_paths):
