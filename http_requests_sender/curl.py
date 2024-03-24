@@ -21,6 +21,6 @@ def build_curl_requests(http_requests):
     return curl_requests
 
 
-def send_curl_requests(curl_requests):
+def send_curl_requests(curl_requests, handler=subprocess.run):
     for curl_request in curl_requests:
-        subprocess.run(curl_request, stdout=subprocess.DEVNULL)
+        handler(curl_request, stdout=subprocess.DEVNULL)
