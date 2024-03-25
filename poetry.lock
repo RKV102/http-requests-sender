@@ -140,6 +140,16 @@ dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
+name = "progress"
+version = "1.6"
+description = "Easy to use progress bars"
+optional = false
+python-versions = "*"
+files = [
+    {file = "progress-1.6.tar.gz", hash = "sha256:c9c86e98b5c03fa1fe11e3b67c1feda4788b8d0fe7336c2ff7d5644ccfba34cd"},
+]
+
+[[package]]
 name = "pycodestyle"
 version = "2.11.1"
 description = "Python style guide checker"
@@ -184,4 +194,4 @@ testing = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygm
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "81a25595878335b940e2087e98279af6ec0535d95de64736a6d14d8a7a128494"
+content-hash = "795efb4824043bd834680221177f6d671b1121f6d5759a6aac0673aca0274909"
