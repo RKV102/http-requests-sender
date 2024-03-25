@@ -1,8 +1,8 @@
 from os.path import dirname, abspath, join
 
 
-FIXTURE_PATH_START = join(dirname(abspath(__file__)), 'fixtures')
+FIXTURES_DIR = join(dirname(abspath(__file__)), 'fixtures')
 
 
 def get_fixture_path(fixture_name):
-    return join(FIXTURE_PATH_START, fixture_name)
+    return join(FIXTURES_DIR, fixture_name)
