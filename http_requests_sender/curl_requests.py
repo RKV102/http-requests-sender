@@ -23,5 +23,13 @@ def build_curl_requests(http_requests, destination_ip):
 
 
 def send_curl_requests(curl_requests, sender, stdout, stderr):
+    total_requests = len(curl_requests)
+    successful_requests = 0
     for curl_request in curl_requests:
-        sender(args=curl_request, stdout=stdout, stderr=stderr)
+        status_code = sender(
+            args=curl_request, stdout=stdout, stderr=stderr
+        ).returncode
+        successful_requests += 1 if (status_code == 0
+                                     or status_code == 23) else 0
+    print(f'total requests: {total_requests}\n'
+          f'successful requests: {successful_requests}')

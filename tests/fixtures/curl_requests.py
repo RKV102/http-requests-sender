@@ -1,6 +1,6 @@
 general_headings1 = (
-    'User-Agent: Mozilla/5.0 (compatible; '
-    + 'Konqueror/3.5; Linux) KHTML/3.5.8 (like Gecko)',
+    ('User-Agent: Mozilla/5.0 (compatible; '
+     'Konqueror/3.5; Linux) KHTML/3.5.8 (like Gecko)'),
     'Pragma: no-cache',
     'Cache-control: no-cache',
 )
@@ -28,8 +28,8 @@ curl_requests = (
         'curl', '-X', 'GET', '-G', '-d', 'idA=2',
         *to_headers(
             *general_headings1,
-            'Accept: text/xml,application/xml,application/xhtml+xml,'
-            + 'text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5',
+            ('Accept: text/xml,application/xml,application/xhtml+xml,'
+             'text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5'),
             *general_headings2,
             'Host: 192.168.1.45:8080',
             'Cookie: JSESSIONID=7FD36920003C837664CF0EF535DC10B9',
@@ -42,8 +42,8 @@ curl_requests = (
         'curl', '-X', 'POST', '-d', 'idA=2',
         *to_headers(
             *general_headings1,
-            'Accept: text/xml,application/xml,application/xhtml+xml,'
-            + 'text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5',
+            ('Accept: text/xml,application/xml,application/xhtml+xml,'
+             'text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5'),
             *general_headings2,
             'Host: 192.168.1.45:8080',
             'Cookie: JSESSIONID=60C9AB659F50A63D09E06E962FC5ABB1',
@@ -58,8 +58,8 @@ curl_requests = (
         + 'c69p04e13&remember=off&B1=Entrar',
         *to_headers(
             *general_headings1,
-            'Accept:text/xml,application/xml,application/xhtml+xml,text/html;'
-            + 'q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5',
+            ('Accept:text/xml,application/xml,application/xhtml+xml,text/html;'
+             'q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5'),
             *general_headings2,
             'Host: 192.168.1.45:9090',
             'Cookie: JSESSIONID=50E143DACA21CB0B6409C4685683A385',
