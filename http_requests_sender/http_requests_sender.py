@@ -1,5 +1,6 @@
-from http_requests_sender.http import get_http_requests
-from http_requests_sender.curl import build_curl_requests, send_curl_requests
+from http_requests_sender.http_requests import get_http_requests
+from http_requests_sender.curl_requests import (build_curl_requests,
+                                                send_curl_requests)
 import subprocess
 
 
