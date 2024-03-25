@@ -41,8 +41,8 @@ class HttpRequest:
 
 
 def get_http_requests(contents):
-    return [
-        HttpRequest(key, sub_value) for elem in [
+    return (
+        HttpRequest(key, sub_value) for elem in (
             {
                 key: re.findall(
                     pattern=r'(POST.+?\n\n.+?\n|PUT.+?\n\n.+?\n'
@@ -52,5 +52,5 @@ def get_http_requests(contents):
                 )
             }
             for key in contents.keys()
-        ] for key, value in elem.items() for sub_value in value
-    ]
+        ) for key, value in elem.items() for sub_value in value
+    )

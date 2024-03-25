@@ -16,11 +16,11 @@ general_post_put_headings = (
 
 
 def to_headers(*plain_headers):
-    return [
-        j for i in [
+    return (
+        j for i in (
             ('-H', plain_header) for plain_header in plain_headers
-        ] for j in i
-    ]
+        ) for j in i
+    )
 
 
 curl_requests = (

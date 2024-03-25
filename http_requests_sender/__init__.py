@@ -7,9 +7,9 @@ DESTINATION_IP = '192.168.1.45'
 
 
 def get_files(input_dir=INPUT_DIR):
-    return [
+    return (
         item for item in listdir(input_dir) if isfile(join(input_dir, item))
-    ]
+    )
 
 
 def get_files_contents(files, input_dir=INPUT_DIR):
