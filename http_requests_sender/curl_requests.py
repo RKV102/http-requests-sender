@@ -1,4 +1,5 @@
 from progress.bar import IncrementalBar
+from time import sleep
 
 
 def build_curl_requests(http_requests, destination_ip):
@@ -26,11 +27,12 @@ def build_curl_requests(http_requests, destination_ip):
 
 
 def send_curl_requests(curl_requests, sender, stdout, stderr):
-    bar = IncrementalBar('Status:', max=len(curl_requests))
+    bar = IncrementalBar('Sent requests:', max=len(curl_requests))
     for curl_request in curl_requests:
         status_code = sender(
             args=curl_request, stdout=stdout, stderr=stderr
         ).returncode
-        if status_code == 0 or status_code == 23:
+        if status_code in (0, 23):
             bar.next()
+        sleep(1.0)
     bar.finish()
