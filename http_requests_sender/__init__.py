@@ -11,7 +11,7 @@ def get_files(input_dir=INPUT_DIR):
     return [item for item in items if isfile(item)]
 
 
-def get_file_contents(file_paths):
+def get_files_contents(file_paths):
     contents = []
     for file_path in file_paths:
         with open(file_path) as file:
