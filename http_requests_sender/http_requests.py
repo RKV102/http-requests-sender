@@ -9,8 +9,8 @@ class HttpRequest:
             flags=re.M
         )
         self.url = re.findall(
-            pattern=r'(?<=GET ).*?(?=\?| )|(?<=POST ).*?(?= )'
-                    + r'|(?<=PUT ).*?(?= )',
+            pattern=(r'(?<=GET ).*?(?=\?| )|(?<=POST ).*?(?= )'
+                     r'|(?<=PUT ).*?(?= )'),
             string=string
         )
         self.query = re.findall(pattern=r'(?<=\?).*?(?= HTTP)', string=string)
@@ -45,8 +45,8 @@ def get_http_requests(contents):
         HttpRequest(key, sub_value) for elem in (
             {
                 key: re.findall(
-                    pattern=r'(POST.+?\n\n.+?\n|PUT.+?\n\n.+?\n'
-                            + '|GET.+?\n(?=\n))',
+                    pattern=(r'POST.+?\n\n.+?\n|PUT.+?\n\n.+?\n'
+                             r'|GET.+?\n(?=\n)'),
                     string=contents[key],
                     flags=re.S
                 )
