@@ -11,8 +11,7 @@ def test_send_http_requests():
         destination_ip='192.168.1.45',
         request_sender=mock,
         request_sender_stdout=None,
-        request_sender_stderr=None,
-        delay=0.0
+        request_sender_stderr=None
     )
     assert mock.call_args_list == [
         ({'args': curl_requests[0], 'stdout': None, 'stderr': None},),

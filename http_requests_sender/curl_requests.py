@@ -26,7 +26,7 @@ def build_curl_requests(http_requests, destination_ip):
     return curl_requests
 
 
-def send_curl_requests(curl_requests, sender, stdout, stderr, delay):
+def send_curl_requests(curl_requests, sender, stdout, stderr):
     sent_requests_counter = Counter('Sent requests: ')
     unsent_requests_count = 0
     for curl_request in curl_requests:
@@ -35,8 +35,8 @@ def send_curl_requests(curl_requests, sender, stdout, stderr, delay):
         ).returncode
         if status_code in (0, 23):
             sent_requests_counter.next()
+            sleep(1.0)
         else:
             unsent_requests_count += 1
-        sleep(delay)
     sent_requests_counter.finish()
     print(f'Unsent requests: {unsent_requests_count}')
