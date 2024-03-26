@@ -1,5 +1,6 @@
 from http_requests_sender import (get_files, get_files_contents,
-                                  DESTINATION_IP, FIRST_REQUEST, LAST_REQUEST)
+                                  DESTINATION_IP, FIRST_REQUEST_NUM,
+                                  LAST_REQUEST_NUM)
 from http_requests_sender.http_requests_sender import send_http_requests
 
 
