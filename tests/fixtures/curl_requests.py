@@ -15,7 +15,7 @@ general_post_put_headings = (
 )
 
 
-def to_headers(*plain_headers):
+def to_curl_headers(*plain_headers):
     return (
         j for i in (
             ('-H', plain_header) for plain_header in plain_headers
@@ -26,7 +26,7 @@ def to_headers(*plain_headers):
 curl_requests = (
     [
         'curl', '-X', 'GET', '-G', '-d', 'idA=2',
-        *to_headers(
+        *to_curl_headers(
             *general_headings1,
             ('Accept: text/xml,application/xml,application/xhtml+xml,'
              'text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5'),
@@ -39,7 +39,7 @@ curl_requests = (
     ],
     [
         'curl', '-X', 'POST', '-d', 'idA=2',
-        *to_headers(
+        *to_curl_headers(
             *general_headings1,
             ('Accept: text/xml,application/xml,application/xhtml+xml,'
              'text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5'),
@@ -54,7 +54,7 @@ curl_requests = (
     [
         'curl', '-X', 'PUT', '-d', 'modo=entrar&login=modestin&pwd='
         + 'c69p04e13&remember=off&B1=Entrar',
-        *to_headers(
+        *to_curl_headers(
             *general_headings1,
             ('Accept:text/xml,application/xml,application/xhtml+xml,text/html;'
              'q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5'),
