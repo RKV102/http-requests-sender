@@ -9,11 +9,11 @@ def build_curl_requests(http_requests, first_request_num,
             continue
         method = http_request.get_method()
         url = http_request.get_url() if destination_ip is None\
-            else http_request.get_url().replace('localhost', destination_ip)
+            else http_request.get_url().replace('localhost', destination_ip, 1)
         query = http_request.get_query()
         headers = (
             header if destination_ip is None
-            else header.replace('localhost', destination_ip)
+            else header.replace('localhost', destination_ip, 1)
             for header in http_request.get_headers()
         )
         body = http_request.get_body()
