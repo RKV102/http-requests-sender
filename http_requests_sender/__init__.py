@@ -17,9 +17,9 @@ def get_files(input_dir=INPUT_DIR):
 
 
 def get_files_contents(files):
-    return (read_file(file) for file in files)
+    return (get_file_content(file) for file in files)
 
 
-def read_file(file_path):
+def get_file_content(file_path):
     with open(file_path) as file:
         return file.read()
