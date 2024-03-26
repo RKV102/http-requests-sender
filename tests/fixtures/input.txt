@@ -1,3 +1,15 @@
+GET http://localhost:8080/asf-logo-wide.gif~ HTTP/1.1
+User-Agent: Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.8 (like Gecko)
+Pragma: no-cache
+Cache-control: no-cache
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+Accept-Encoding: x-gzip, x-deflate, gzip, deflate
+Accept-Charset: utf-8, utf-8;q=0.5, *;q=0.5
+Accept-Language: en
+Host: localhost:8080
+Cookie: JSESSIONID=51A7470173188BBB993947F2283059E4
+Connection: close
+
 GET http://localhost:8080/tienda1/publico/caracteristicas.jsp?idA=2 HTTP/1.1
 User-Agent: Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.8 (like Gecko)
 Pragma: no-cache
@@ -41,3 +53,15 @@ Connection: close
 Content-Length: 63
 
 modo=entrar&login=modestin&pwd=c69p04e13&remember=off&B1=Entrar
+
+GET http://localhost:8080/tienda1/publico/autenticar.jsp?modo=entrar&login=grimshaw&pwd=G%2F%2FlAc%2CIAr&remember=on&B1=Entrar HTTP/1.1
+User-Agent: Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.8 (like Gecko)
+Pragma: no-cache
+Cache-control: no-cache
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+Accept-Encoding: x-gzip, x-deflate, gzip, deflate
+Accept-Charset: utf-8, utf-8;q=0.5, *;q=0.5
+Accept-Language: en
+Host: localhost:8080
+Cookie: JSESSIONID=0FCF23BE3D0EB007F5289208CE069EAA
+Connection: close

@@ -2,14 +2,17 @@ from progress.counter import Counter
 from time import sleep
 
 
-def build_curl_requests(http_requests, destination_ip):
-    curl_requests = []
-    for http_request in http_requests:
+def build_curl_requests(http_requests, first_request,
+                        last_request, destination_ip):
+    for num, http_request in enumerate(http_requests):
+        if num < (first_request - 1) or num > (last_request - 1):
+            continue
         method = http_request.get_method()
-        url = http_request.get_url().replace('localhost', destination_ip)
+        url = http_request.get_url() if destination_ip is None\
+            else http_request.get_url().replace('localhost', destination_ip)
         query = http_request.get_query()
         headers = (
-            header if 'localhost' not in header
+            header if destination_ip is None
             else header.replace('localhost', destination_ip)
             for header in http_request.get_headers()
         )
@@ -22,8 +25,7 @@ def build_curl_requests(http_requests, destination_ip):
         curl_request = [*curl_request, *(
             j for i in (('-H', header) for header in headers) for j in i
         ), url]
-        curl_requests.append(curl_request)
-    return curl_requests
+        yield curl_request
 
 
 def send_curl_requests(curl_requests, sender, stdout, stderr):
