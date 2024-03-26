@@ -33,8 +33,7 @@ curl_requests = (
             *general_headings2,
             'Host: 192.168.1.45:8080',
             'Cookie: JSESSIONID=7FD36920003C837664CF0EF535DC10B9',
-            'Connection: close',
-            'From-File: input.txt'
+            'Connection: close'
         ),
         'http://192.168.1.45:8080/tienda1/publico/caracteristicas.jsp'
     ],
@@ -48,8 +47,7 @@ curl_requests = (
             'Host: 192.168.1.45:8080',
             'Cookie: JSESSIONID=60C9AB659F50A63D09E06E962FC5ABB1',
             *general_post_put_headings,
-            'Content-Length: 5',
-            'From-File: input.txt'
+            'Content-Length: 5'
         ),
         'http://192.168.1.45:8080/tienda1/publico/caracteristicas.jsp'
     ],
@@ -64,8 +62,7 @@ curl_requests = (
             'Host: 192.168.1.45:9090',
             'Cookie: JSESSIONID=50E143DACA21CB0B6409C4685683A385',
             *general_post_put_headings,
-            'Content-Length: 63',
-            'From-File: input.txt'
+            'Content-Length: 63'
         ),
         'http://192.168.1.45:8080/tienda1/publico/autenticar.jsp'
     ]
