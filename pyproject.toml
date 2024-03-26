@@ -13,6 +13,7 @@ http-requests-sender = "http_requests_sender.scripts.entry_point:main"
 [tool.poetry.dependencies]
 python = "^3.11"
 progress = "^1.6"
+argparse = "^1.4.0"
 
 
 [tool.poetry.group.dev.dependencies]
