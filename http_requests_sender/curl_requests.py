@@ -2,10 +2,10 @@ from progress.counter import Counter
 from time import sleep
 
 
-def build_curl_requests(http_requests, first_request,
-                        last_request, destination_ip):
+def build_curl_requests(http_requests, first_request_num,
+                        last_request_num, destination_ip):
     for num, http_request in enumerate(http_requests):
-        if num < (first_request - 1) or num > (last_request - 1):
+        if num < (first_request_num - 1) or num > (last_request_num - 1):
             continue
         method = http_request.get_method()
         url = http_request.get_url() if destination_ip is None\
