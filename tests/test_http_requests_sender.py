@@ -9,8 +9,8 @@ def test_send_http_requests():
     send_http_requests(
         contents=load_fixtures_contents('input.txt'),
         destination_ip='192.168.1.45',
-        first_request=2,
-        last_request=4,
+        first_request_num=2,
+        last_request_num=4,
         request_sender=mock,
         request_sender_stdout=None,
         request_sender_stderr=None
