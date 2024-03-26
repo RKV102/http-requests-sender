@@ -1,5 +1,5 @@
 from http_requests_sender.http_requests_sender import send_http_requests
-from tests import get_fixtures_contents
+from tests import get_fixture_content
 from tests.fixtures.curl_requests import curl_requests
 from unittest.mock import Mock
 
@@ -7,7 +7,7 @@ from unittest.mock import Mock
 def test_send_http_requests():
     mock = Mock()
     send_http_requests(
-        contents=get_fixtures_contents('input.txt'),
+        contents=[get_fixture_content('input.txt')],
         destination_ip='192.168.1.45',
         first_request_num=2,
         last_request_num=4,
