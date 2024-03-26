@@ -3,17 +3,17 @@ from time import sleep
 
 
 def build_curl_requests(http_requests, first_request_num,
-                        last_request_num, destination_ip):
+                        last_request_num, host):
     for num, http_request in enumerate(http_requests):
         if num < (first_request_num - 1) or num > (last_request_num - 1):
             continue
         method = http_request.get_method()
-        url = http_request.get_url() if destination_ip is None\
-            else http_request.get_url().replace('localhost', destination_ip, 1)
+        url = http_request.get_url() if host is None\
+            else http_request.get_url().replace('localhost', host, 1)
         query = http_request.get_query()
         headers = (
-            header if destination_ip is None
-            else header.replace('localhost', destination_ip, 1)
+            header if host is None
+            else header.replace('localhost', host, 1)
             for header in http_request.get_headers()
         )
         body = http_request.get_body()

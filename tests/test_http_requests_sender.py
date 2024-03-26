@@ -8,7 +8,7 @@ def test_send_http_requests():
     mock = Mock()
     send_http_requests(
         contents=[get_fixture_content('input.txt')],
-        destination_ip='192.168.1.45',
+        host='192.168.1.45',
         first_request_num=2,
         last_request_num=4,
         request_sender=mock,

@@ -1,14 +1,13 @@
-from http_requests_sender import (get_files_paths, get_files_contents,
-                                  DESTINATION_IP, FIRST_REQUEST_NUM,
-                                  LAST_REQUEST_NUM)
+from http_requests_sender import get_files_paths, get_files_contents
 from http_requests_sender.http_requests_sender import send_http_requests
+from http_requests_sender.cli import parse
 
 
 def main():
-    files_paths = get_files_paths()
+    input_dir, host, first_request_num, second_request_num = parse()
+    files_paths = get_files_paths(input_dir)
     contents = get_files_contents(files_paths)
-    send_http_requests(contents, DESTINATION_IP,
-                       FIRST_REQUEST_NUM, LAST_REQUEST_NUM)
+    send_http_requests(contents, host, first_request_num, second_request_num)
 
 
 if __name__ == '__main__':
