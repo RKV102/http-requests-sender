@@ -41,4 +41,5 @@ def send_curl_requests(curl_requests, sender, stdout, stderr):
         else:
             unsent_requests_count += 1
     sent_requests_counter.finish()
-    print(f'Unsent requests: {unsent_requests_count}')
+    if unsent_requests_count:
+        print(f'Unsent requests: {unsent_requests_count}')
