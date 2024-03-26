@@ -10,24 +10,36 @@ def build_curl_requests(http_requests, first_request_num,
         if num > last_request_num:
             break
         method = http_request.get_method()
-        url = http_request.get_url() if host is None\
-            else http_request.get_url().replace('localhost', host, 1)
+        url = to_curl_url(http_request.get_url(), host)
         query = http_request.get_query()
-        headers = (
-            header if host is None
-            else header.replace('localhost', host, 1)
-            for header in http_request.get_headers()
-        )
         body = http_request.get_body()
-        curl_request = ['curl', '-X', method]
-        if body:
-            curl_request = [*curl_request, '-d', body]
-        elif query:
-            curl_request = [*curl_request, '-G', '-d', query]
-        curl_request = [*curl_request, *(
-            j for i in (('-H', header) for header in headers) for j in i
-        ), url]
+        headers = to_curl_headers(http_request.get_headers(), host)
+        data = to_curl_data(query, body)
+        curl_request = ['curl', '-X', method, *data, *headers, url]
         yield curl_request
+
+
+def to_curl_url(plain_url, host):
+    if host is None:
+        return plain_url
+    return plain_url.replace('localhost', host, 1)
+
+
+def to_curl_data(query, body):
+    if body:
+        return '-d', body
+    return '-G', '-d', query
+
+
+def to_curl_headers(plain_headers, host):
+    return (elem for list_ in (to_curl_header(plain_header, host)
+            for plain_header in plain_headers) for elem in list_)
+
+
+def to_curl_header(plain_header, host):
+    if host is None or 'localhost' not in plain_header:
+        return '-H', plain_header
+    return '-H', plain_header.replace('localhost', host, 1)
 
 
 def send_curl_requests(curl_requests, sender, stdout, stderr):
