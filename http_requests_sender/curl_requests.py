@@ -4,9 +4,11 @@ from time import sleep
 
 def build_curl_requests(http_requests, first_request_num,
                         last_request_num, host):
-    for num, http_request in enumerate(http_requests):
-        if num < (first_request_num - 1) or num > (last_request_num - 1):
+    for num, http_request in enumerate(http_requests, start=1):
+        if num < first_request_num:
             continue
+        if num > last_request_num:
+            break
         method = http_request.get_method()
         url = http_request.get_url() if host is None\
             else http_request.get_url().replace('localhost', host, 1)
