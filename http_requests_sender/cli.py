@@ -9,7 +9,7 @@ def parse():
     parser.add_argument('-H', '--host', type=str,
                         default=None, dest='host')
     parser.add_argument('-F', '--first_request_num', type=int,
-                        default=0, dest='first_request_num',
+                        default=1, dest='first_request_num',
                         help='Allows you to set the beginning '
                              'of the range of HTTP requests to be sent')
     parser.add_argument('-L', '--last_request_num', type=int,
