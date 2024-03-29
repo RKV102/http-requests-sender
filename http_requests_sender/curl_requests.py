@@ -28,7 +28,9 @@ def to_curl_url(plain_url, host):
 def to_curl_data(query, body):
     if body:
         return '-d', body
-    return '-G', '-d', query
+    elif query:
+        return '-G', '-d', query
+    return []
 
 
 def to_curl_headers(plain_headers, host):
