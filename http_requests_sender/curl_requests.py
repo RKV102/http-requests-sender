@@ -2,8 +2,8 @@ from progress.counter import Counter
 from time import sleep
 
 
-def build_curl_requests(http_requests, first_request_num,
-                        last_request_num, host):
+def to_curl_requests(http_requests, first_request_num,
+                     last_request_num, host):
     for num, http_request in enumerate(http_requests, start=1):
         if num < first_request_num:
             continue
