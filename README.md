@@ -6,3 +6,4 @@
 
 [![check](https://github.com/RKV102/csv-converter/actions/workflows/check.yml/badge.svg)](https://github.com/RKV102/csv-converter/actions/workflows/check.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/97d8dbb583dce376ecaf/maintainability)](https://codeclimate.com/github/RKV102/http-requests-sender/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/97d8dbb583dce376ecaf/test_coverage)](https://codeclimate.com/github/RKV102/http-requests-sender/test_coverage)
